@@ -91,7 +91,7 @@
     </div>
 
     <!--input search and button section-->
-<div class="row">
+<div class="row mb-3">
     <div class="col-10">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -109,9 +109,43 @@
     </div>
 </div>
 
-    
-    <!--table-->
 
+    <!--table-->
+    <table class="table" id="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Picture 1</th>
+            <td>Mark</td>
+            <td>mark@gmail.com</td>
+            <td>1234567890</td>
+            <td>
+                <span>Edit</span>
+                <span>Profile</span>
+                <span>Delete</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--pagination-->
+    <nav aria-label="Page navigation example" id="pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
 
 </div>
 
