@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 // Require the correct variable type to be used (no auto-converting)
 declare (strict_types=1);
 
@@ -48,3 +48,4 @@ function create()
 {
     // TODO: provide the create logic
 }
+*/
