@@ -1,3 +1,20 @@
+<?php
+require_once "classes/databaseManager.php";
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+
+try {
+    $dbobj = new DatabaseManager("localhost", "root", "root", "userdata");
+    var_dump($dbobj);
+} catch (Exception $e) {
+    echo "Error creating DatabaseManager instance: " . $e->getMessage();
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -111,7 +128,7 @@
 
 
     <!--table-->
-    <table class="table" id="table">
+    <table class="table" id="userTable">
         <thead class="table-dark">
         <tr>
             <th scope="col">Image</th>
@@ -139,11 +156,12 @@
     <!--pagination-->
     <nav aria-label="Page navigation example" id="pagination">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
         </ul>
     </nav>
 
@@ -152,9 +170,11 @@
 
 
 <ul>
-    <?php foreach ($cards as $card) : ?>
+
+   <?php foreach ($cards as $card) : ?>
         <li><?= $card['name'] ?></li>
     <?php endforeach; ?>
+
 </ul>
 
 </body>
