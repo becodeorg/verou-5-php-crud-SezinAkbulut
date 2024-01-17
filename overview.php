@@ -1,18 +1,27 @@
+
 <?php
+/*
 require_once "classes/databaseManager.php";
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
 try {
-    $dbobj = new DatabaseManager("localhost", "root", "root", "userdata");
+    $dbobj = new DatabaseManager();
     var_dump($dbobj);
+    $pdo = $dbobj->connect();
+
+    // $pdo for database operations
+
+
 } catch (Exception $e) {
-    echo "Error creating DatabaseManager instance: " . $e->getMessage();
+    echo "Error creating DatabaseManager instance: "  . $e->getMessage();
 }
+*/
 ?>
+
+
 
 
 <!doctype html>
@@ -28,7 +37,8 @@ try {
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+    <!-- js file-->
+    <script src="./js/script.js"></script>
 </head>
 <body>
 
@@ -38,74 +48,12 @@ try {
 
 
     <!-- Modal -->
-    <div class="modal fade" id="newmodal" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Adding or Updating</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <form id="addform" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <!--name-->
-                    <div class="form-group">
-                        <label>Name:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-dark">
-                                 <i class="fa fa-user-alt text-light"></i>
-                                 </span>
-                            </div>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" autocomplete="off" required="required">
-                        </div>
-                    </div>
-
-                    <!--email-->
-                    <div class="form-group">
-                        <label>E-mail:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-dark">
-                                 <i class="fas fa-envelope-open text-light"></i>
-                                 </span>
-                            </div>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your e-mail" autocomplete="off" required="required">
-                        </div>
-                    </div>
-
-                    <!--mobile-->
-                    <div class="form-group">
-                        <label>Mobile:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-dark">
-                                 <i class="fas fa-phone text-light"></i>
-                                 </span>
-                            </div>
-                            <input type="text" class="form-control" id="mobile" name="mobile" maxlength="10" minlength="10" placeholder="Enter your mobile" autocomplete="off" required="required">
-                        </div>
-                    </div>
-
-                    <!--photo-->
-                    <div class="form-group">
-                        <label>Photo:</label>
-                        <div class="input-group">
-                            <label class="custom-file-label" for="photo">Choose File:</label>
-                            <input type="file" class="custom-file-input" name="photo" id="photo">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-             </form>
-            </div>
-        </div>
-    </div>
+    <?php
+    include "form.php";
+    ?>
+    <?php
+    include "profile.php";
+    ?>
 
     <!--input search and button section-->
 <div class="row mb-3">
@@ -128,30 +76,9 @@ try {
 
 
     <!--table-->
-    <table class="table" id="userTable">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Operations</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">Picture 1</th>
-            <td>Mark</td>
-            <td>mark@gmail.com</td>
-            <td>1234567890</td>
-            <td>
-                <span>Edit</span>
-                <span>Profile</span>
-                <span>Delete</span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <?php
+    require_once "table.php";
+    ?>
 
     <!--pagination-->
     <nav aria-label="Page navigation example" id="pagination">
